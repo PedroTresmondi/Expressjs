@@ -11,7 +11,7 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 app.get('/ola/:nome/:cargo', function (req, res) {
-  res.send('ola bem vindo')
+  res.send(req.params)
 })
 
 app.use(express.static('public'))
