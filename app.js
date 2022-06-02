@@ -7,10 +7,13 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const path = require('path')
-app.use('/static', express.static(path.join(__dirname, 'public')))
 
 var app = express();
+
+app.get('/ola/:nome/:cargo', function (req, res) {
+  res.send('ola bem vindo')
+})
+
 app.use(express.static('public'))
 app.use(express.static('files'))
 app.use('/static', express.static('public'))
