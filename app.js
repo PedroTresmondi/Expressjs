@@ -8,11 +8,38 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 
+
+const animais = [
+  {id: 1, "nome": "Rupert", "raca": "Golden Retriever"},
+  {id: 2, "nome": "Pierre", "raca": "Yorkshire"},
+  {id: 3, "nome": "Max", "raca": "Pug"},
+
+ 
+]
 var app = express();
+app.use(express.json())
+
+
+app.get('/', (req, res) => {
+  res.status(200).send('Testando');
+}) 
+
+
+app.get('/animais', (req, res) => {
+  res.status(200).json(animais)
+})
+
 
 app.get('/ola/:nome/:cargo', function (req, res) {
   res.send("<h1> " + req.params.nome +"</h1>" + 
   "<h2> cargo:  "+ req.params.cargo +"</h2>");
+
+})
+
+app.post('/animais', (req, res) => {
+  animais.push(req.body);
+  res.status(201).send('Animal cadastrado!')
+  
 
 })
 
