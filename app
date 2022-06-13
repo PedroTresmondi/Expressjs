@@ -7,13 +7,9 @@ var indexRouter = require('./routes/index.js');
 var usersRouter = require('./routes/users');
 
 var app = express();
-var db = require("./config/dbConnection.js");
+var db = require("./config/dbConnection.js"); 
 
-
-var animais = require("./models/Animal.js");
-const routes = require('./routes/index.js');
-
-db.on("error", console.log.bind(console, 'Erro ao conectar mongoose'))
+db.on("error", console.log.bind(console, 'Erro ao conectar ao banco'))
 db.once("open", () => {
   console.log('Conexao com banco feita com sucesso');
 })
@@ -23,31 +19,7 @@ indexRouter(app);
 
 
 
-app.post('/animais', (req, res) => {
-  animais.push(req.body);
-  res.status(201).send('Animal cadastrado!')
-})
-
-app.put('/animais/:id', (req, res) => {
-  let index = procuraAnimal(req.params.id);
-  animais[index].nome = req.body.nome;
-  res.json(animais);
-})
-
-app.delete('/animais/:id', (req, res) => {
-  let { id } = req.params;
-  let index = procuraAnimal(id);
-  animais.splice(index, 1);
-  res.send(`Animal ${id} removido`);
-})
-
-
-function procuraAnimal(id) {
-  return animais.findIndex(animal => animal.id == id)
-}
-
-
-
+//npm install express
 app.use(express.static('public'))
 app.use(express.static('files'))
 app.use('/static', express.static('public'))
