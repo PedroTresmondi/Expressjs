@@ -8,6 +8,6 @@ const animalSchema = new mongoose.Schema({
   tipo: { type: String, required: true }
 });
 
-const animais = mongoose.model('animais', animalSchema);
+const animalModel = mongoose.model('animais', animalSchema);
 
-module.exports = animais;
+module.exports = animalModel;
