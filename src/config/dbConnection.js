@@ -2,9 +2,10 @@ const mongoose = require('mongoose');
 
 mongoose.connect(
   //'mongodb+srv://root:root@petshop.yxrfa3p.mongodb.net/petshopDB?'
-  'mongodb://root:example@mongo:27017/',
+  'mongodb://root:example@localhost:27017/petshopDB?directConnection=true'
 );
 
 const db = mongoose.connection;
 
 module.exports = db;
+

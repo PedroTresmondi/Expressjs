@@ -3,7 +3,7 @@ const AnimalController = require('../controllers/animalsController');
 
 const router = express.Router();
 
-//const animalController = new AnimalController();
+const animalController = new AnimalController();
 
 router
   .get('/animais', AnimalController.list)

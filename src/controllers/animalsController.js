@@ -7,6 +7,7 @@ class AnimalController {
     });
   };
 
+
   static listById = (req, res) => {
     const { id } = req.params;
     AnimalModel.findById(id, (err, animais) => {
@@ -22,7 +23,7 @@ class AnimalController {
 
   static register = (req, res) => {
     const animal = new AnimalModel(req.body);
-    animal.save((err) => {
+    animal.save((err) => {      
       if (err) {
         res.status(500).send({
           message: `${err.message} - Falha ao cadastrar animal`
