@@ -1,6 +1,7 @@
 const express = require('express');
 const createError = require('http-errors');
 const animalsRouter = require('./routes/animals');
+const morgan = require('morgan');
 
 const app = express();
 const db = require('./config/dbConnection');
@@ -10,6 +11,8 @@ db.once('open', () => {
   console.log('Conexao com banco feita com sucesso');
 });
 app.use(express.json());
+
+app.use(morgan('dev'));
 
 app.use('/animals', animalsRouter);
 

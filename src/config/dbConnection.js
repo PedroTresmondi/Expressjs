@@ -1,9 +1,17 @@
 const mongoose = require('mongoose');
 
-mongoose.connect(
+//mongoose.connect(
   //'mongodb+srv://root:root@petshop.yxrfa3p.mongodb.net/petshopDB?'
-  'mongodb://root:example@localhost:27017/petshopDB?directConnection=true'
-);
+//  'mongodb://root:example@localhost:27017/petshopDB?authSource=admin'
+//);
+
+mongoose.connect(
+  `mongodb://root:example@localhost:27017/petshopDB?authSource=admin`,
+  {
+    useNewUrlParser: true,
+  }
+)
+
 
 const db = mongoose.connection;
 

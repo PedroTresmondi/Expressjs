@@ -6,10 +6,10 @@ const router = express.Router();
 const animalController = new AnimalController();
 
 router
-  .get('/animais', AnimalController.list)
-  .get('/animais/:id', AnimalController.listById)
-  .post('/animais', AnimalController.register)
-  .put('/animais/:id', AnimalController.updateById)
-  .delete('/animais/:id', AnimalController.delete);
+  .get('/', AnimalController.list)
+  .get('/:id', AnimalController.listById)
+  .post('/', AnimalController.register)
+  .put('/:id', AnimalController.updateById)
+  .delete('/:id', AnimalController.delete);
 
 module.exports = router;
